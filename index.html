@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Enquiry Form</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    padding: 2rem;
+  }
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  h2 {
+    margin-top: 0;
+    color: #2c3e50;
+  }
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .help-text {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  select, input[type="text"], textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  .dynamic-section {
+    display: none;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    margin-top: 1rem;
+  }
+  .dynamic-section.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  button {
+    background-color: #3498db;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  button:hover {
+    background-color: #2980b9;
+  }
+  button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>Project Enquiry</h2>
+  <form id="enquiryForm">
+    
+    <!-- Main Service Dropdown -->
+    <div class="form-group">
+      <label for="serviceType">What type of design service do you need?</label>
+      <select id="serviceType" name="serviceType" required>
+        <option value="" disabled selected>Select a service...</option>
+        <option value="brand">Brand Design (Identities, Logos, Guidelines)</option>
+        <option value="advertising">Advertising Design (Campaigns, Marketing)</option>
+        <option value="illustration">Illustration (Custom Artwork, Characters)</option>
+      </select>
+    </div>
+
+    <!-- Brand Design Section -->
+    <div id="brand-section" class="dynamic-section">
+      <h3>Brand Identity Details</h3>
+      
+      <div class="form-group">
+        <label>What does your company do and what is your core mission?</label>
+        <textarea name="brandMission" class="dynamic-required" placeholder="Explain your fundamental business purpose..."></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label>Who is your ideal customer, and who is this brand NOT for?</label>
+        <textarea name="brandCustomer" class="dynamic-required" placeholder="Identify your specific target demographic..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>If your business walked into a room as a person, how would it act or feel?</label>
+        <textarea name="brandPersona" class="dynamic-required" placeholder="Describe the brand personality..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>What style traits best represent your look?</label>
+        <span class="help-text">Narrow down your aesthetic preferences.</span>
+        <select name="brandStyle" class="dynamic-required">
+          <option value="" disabled selected>Select an option...</option>
+          <option value="modern">Modern & Minimalist</option>
+          <option value="traditional">Traditional & Classic</option>
+          <option value="playful">Playful & Vibrant</option>
+          <option value="corporate">Corporate & Professional</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>What are your non-negotiables or elements to avoid?</label>
+        <textarea name="brandAvoid" class="dynamic-required" placeholder="Set clear design boundaries..."></textarea>
+      </div>
+    </div>
+
+    <!-- Advertising Design Section -->
+    <div id="advertising-section" class="dynamic-section">
+      <h3>Advertising Campaign Details</h3>
+      
+      <div class="form-group">
+        <label>What is the primary goal of this specific campaign?</label>
+        <select name="adGoal" class="dynamic-required">
+          <option value="" disabled selected>Select primary goal...</option>
+          <option value="lead-gen">Lead Generation</option>
+          <option value="awareness">Brand Awareness</option>
+          <option value="sales">Direct Sales</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Where will this advertisement live?</label>
+        <select name="adLocation" class="dynamic-required">
+          <option value="" disabled selected>Select primary platform...</option>
+          <option value="social">Social Media (Instagram, Facebook, etc.)</option>
+          <option value="print">Print (Magazines, Flyers)</option>
+          <option value="outdoor">Outdoor (Billboards, Posters)</option>
+          <option value="digital">Google/Digital Display Ads</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>What is the single core message or call-to-action (CTA)?</label>
+        <textarea name="adMessage" class="dynamic-required" placeholder="What is the one immediate action the audience must take?"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>What specific offer, discount, or hook are we promoting?</label>
+        <input type="text" name="adOffer" class="dynamic-required" placeholder="Highlight the value proposition...">
+      </div>
+
+      <div class="form-group">
+        <label>Who are your main competitors in this specific campaign, and how do we beat them?</label>
+        <textarea name="adCompetitors" class="dynamic-required" placeholder="Evaluate market positioning..."></textarea>
+      </div>
+    </div>
+
+    <!-- Illustrator Section -->
+    <div id="illustration-section" class="dynamic-section">
+      <h3>Illustration Details</h3>
+      
+      <div class="form-group">
+        <label>What story, mood, or emotion should the illustration convey?</label>
+        <textarea name="illusMood" class="dynamic-required" placeholder="Define the narrative and emotional impact..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Which illustration style do you prefer?</label>
+        <select name="illusStyle" class="dynamic-required">
+          <option value="" disabled selected>Select a style...</option>
+          <option value="flat">Flat Vector</option>
+          <option value="sketch">Hand-drawn Sketch</option>
+          <option value="watercolor">Watercolor</option>
+          <option value="3d">3D Render</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Do you have a preferred color palette?</label>
+        <select name="illusColors" class="dynamic-required">
+          <option value="" disabled selected>Select an option...</option>
+          <option value="strict">Strict brand colors apply</option>
+          <option value="propose">Please propose a palette (creative freedom)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Where will the final artwork be displayed?</label>
+        <select name="illusDisplay" class="dynamic-required">
+          <option value="" disabled selected>Select usage...</option>
+          <option value="book">Book Cover</option>
+          <option value="merch">Merchandise / Apparel</option>
+          <option value="website">Website Banner</option>
+          <option value="packaging">Product Packaging</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>What are the required licensing and usage rights?</label>
+        <select name="illusLicense" class="dynamic-required">
+          <option value="" disabled selected>Select licensing terms...</option>
+          <option value="commercial">General Commercial Use</option>
+          <option value="exclusive">Full Exclusive Buyout</option>
+          <option value="time-limited">Time-Limited Usage</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit">Submit Enquiry</button>
+  </form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const serviceSelect = document.getElementById('serviceType');
+    const sections = document.querySelectorAll('.dynamic-section');
+
+    serviceSelect.addEventListener('change', function() {
+      // Hide all sections and remove 'required' attributes ONLY from fields marked as dynamic-required
+      sections.forEach(section => {
+        section.classList.remove('active');
+        const inputs = section.querySelectorAll('.dynamic-required');
+        inputs.forEach(input => input.required = false); 
+      });
+
+      // Show the selected section and enforce 'required' attributes
+      const selectedValue = this.value;
+      if (selectedValue) {
+        const targetSection = document.getElementById(selectedValue + '-section');
+        if (targetSection) {
+          targetSection.classList.add('active');
+          const inputs = targetSection.querySelectorAll('.dynamic-required');
+          inputs.forEach(input => input.required = true);
+        }
+      }
+    });
+
+    // Handle form submission and send to Make.com
+    document.getElementById('enquiryForm').addEventListener('submit', async function(e) {
+      e.preventDefault(); 
+      
+      const submitButton = this.querySelector('button[type="submit"]');
+      submitButton.textContent = 'Sending...';
+      submitButton.disabled = true;
+
+      const formData = new FormData(this);
+      const formObject = {};
+      
+      // Convert FormData to JSON, safely handling multiple values like future checkbox groups
+      formData.forEach((value, key) => {
+        if (!Reflect.has(formObject, key)) {
+          formObject[key] = value;
+        } else {
+          if (!Array.isArray(formObject[key])) {
+            formObject[key] = [formObject[key]];
+          }
+          formObject[key].push(value);
+        }
+      });
+
+      // ---> REPLACE THIS URL WITH YOUR ACTUAL MAKE.COM WEBHOOK URL <---
+      const makeWebhookUrl = 'https://hook.eu1.make.com/xga2gmldgohmhkmg17hirz52y8dltwt3';
+
+      try {
+        const response = await fetch(makeWebhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formObject)
+        });
+
+        if (response.ok) {
+          alert('Enquiry submitted successfully!');
+          this.reset(); 
+          
+          sections.forEach(section => {
+            section.classList.remove('active');
+            const inputs = section.querySelectorAll('.dynamic-required');
+            inputs.forEach(input => input.required = false);
+          });
+        } else {
+          throw new Error('Network response was not ok.');
+        }
+      } catch (error) {
+        console.error('Error sending data to Make.com:', error);
+        alert('There was a problem submitting your enquiry. Please try again.');
+      } finally {
+        submitButton.textContent = 'Submit Enquiry';
+        submitButton.disabled = false;
+      }
+    });
+  });
+</script>
+</body>
+</html>
